@@ -1,5 +1,5 @@
 // wait for the DOM to finish to finish loading while running game
-// Get the button elments and add event listeners to them
+// Get the button elements and add event listeners to them
 
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let button of buttons) {
         button.addEventListener("click", function () {
             if (this.getAttribute("data-type") === "submit") {
-                checkAnswer()
+                checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /**
  * The main game "loop", called when the script is first loaded 
- * and after the user's asnwer has been processed
+ * and after the user's answer has been processed
  */
 function runGame(gameType) {
     // Creates two random numbers between 1 and 25
@@ -41,12 +41,13 @@ function runGame(gameType) {
  * the returned calculateCorrectAnswer array.
  */
 function checkAnswer() {
+
     let userAnswer = parseInt(document.getElementById("answer-box").value);
     let calculatedAnswer = calculateCorrectAnswer();
     let isCorrect = userAnswer === calculatedAnswer[0];
 
     if (isCorrect) {
-        alert ("Hey you got it right! :D");
+        alert("Hey you got it right! :D");
     } else {
         alert(`Aww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
     }
@@ -65,10 +66,10 @@ function calculateCorrectAnswer() {
     let operator = document.getElementById("operator").innerText;
 
     if (operator === "+") {
-        reutrn [operand1 + operand2, "addition"];
+        return[operand1 + operand2, "addition"];
     } else {
         alert(`Unimplemented operator ${operator}`);
-        throw `Uninplemented operator ${operator}. Aborting!`;
+        throw `Unimplemented operator ${operator}. Aborting!`;
     }
 
 }
